@@ -157,8 +157,12 @@ main {
   font-size: 16px;
 }
 
-.bground {
+.success-modal {
   display: none;
+  text-align: center;
+}
+
+.bground {
   position: fixed;
   z-index: 1;
   left: 0;
@@ -181,6 +185,11 @@ main {
   position: relative;
   color: #fff;
   padding-top: 10px;
+}
+
+.content-close {
+  animation-name: modalClose;
+  animation-duration: var(--modal-duration);
 }
 
 .modal-body {
@@ -226,8 +235,11 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
+.formData[data-valid-visible="true"] .text-control {
+  border: 2px solid #46e282;
+}
+
+/* input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
@@ -520,10 +532,22 @@ footer {
 @keyframes modalopen {
   from {
     opacity: 0;
-    transform: translateY(-150px);
+    transform: translateY(-100vh);
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes modalClose {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform:  translateY(-100vh);
+    display: none;
   }
 }
 
