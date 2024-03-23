@@ -27,6 +27,13 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 closeBtn.forEach((btn) => btn.addEventListener("click", closeFormModal));
 // Listen to submit
 form.addEventListener("submit", submit);
+// Listen to input fields on blur
+formData.forEach((el) => {
+  const inputFields = el.querySelectorAll("input");
+  inputFields[0].addEventListener("blur", function () {
+    validateField(inputFields, el);
+  });
+});
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
